@@ -1,0 +1,16 @@
+version: "3"
+services:   
+  <%= appname %>:
+    image: <%= appname %>
+    build:
+      context: .
+      dockerfile: Dockerfile
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    command: -logtostderr=true
+    networks:
+      - <%= appname %>net
+networks:
+  <%= appname %>net:
